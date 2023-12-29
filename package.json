@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "mongodb": "^6.3.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "pokedex",
+  "version": "1.0.0",
+  "main": "pokemon.js",
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

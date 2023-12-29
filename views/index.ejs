@@ -3,5 +3,7 @@
   <%- include("./partials/head.ejs") %>
   <body>
     <h1>Pokedex</h1>
+    <% for (var i = 0; i < pokemon.length; i++) { %>
+    <div class="pokemon-container"><%= pokemon[i].name %> <% } %></div>
   </body>
 </html>

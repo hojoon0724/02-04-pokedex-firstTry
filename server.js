@@ -7,11 +7,12 @@ const methodOverride = require("method-override");
 require("dotenv").config();
 require("./config/db.js");
 
-const app = express();
-const { PORT = 3013 } = process.env;
 // -----------------------------------------------------
 // Application Object
 // -----------------------------------------------------
+const app = express();
+const { PORT = 3013 } = process.env;
+const pokemon = require("./models/pokemon.js");
 
 // -----------------------------------------------------
 // Middleware
@@ -25,6 +26,9 @@ app.use("/public", express.static("public"));
 // Routes INDUCESS
 // -----------------------------------------------------
 // Index
+app.get("/index", (req, res) => {
+  res.render("index.ejs", { pokemon });
+});
 
 // New
 

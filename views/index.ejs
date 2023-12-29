@@ -5,10 +5,12 @@
     <h1>Pokedex</h1>
     <div class="top-container">
       <% for (var i = 0; i < pokemon.length; i++) { %>
-      <div class="pokemon-container">
-        <div class="pokemon-picture"><img src="<%= pokemon[i].img %>" /></div>
-        <div class="pokemon-name"><%= pokemon[i].name %></div>
-      </div>
+      <a href="/index/<%= i %>">
+        <div class="pokemon-container">
+          <div class="pokemon-picture"><img src="<%= pokemon[i].img %>" /></div>
+          <div class="pokemon-name"><%= pokemon[i].name %></div>
+        </div>
+      </a>
       <% } %>
     </div>
   </body>

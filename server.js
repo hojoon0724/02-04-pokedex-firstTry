@@ -43,6 +43,11 @@ app.get("/index", (req, res) => {
 // Seed
 
 // Show
+app.get("/index/:id", (req, res) => {
+  const id = req.params.id;
+  const pokemonName = pokemon[id];
+  res.render("show.ejs", { pokemon, pokemonName });
+});
 
 // -----------------------------------------------------
 // GET requests

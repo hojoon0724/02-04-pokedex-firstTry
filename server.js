@@ -3,17 +3,23 @@
 // -----------------------------------------------------
 const express = require("express");
 const morgan = require("morgan");
+const methodOverride = require("method-override");
+require("dotenv").config();
+require("./config/db.js");
 
+const app = express();
+const { PORT = 3013 } = process.env;
 // -----------------------------------------------------
 // Application Object
 // -----------------------------------------------------
-const app = express();
-const { PORT = 3013 } = process.env;
 
 // -----------------------------------------------------
 // Middleware
 // -----------------------------------------------------
 app.use(morgan("dev"));
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
+app.use("/public", express.static("public"));
 
 // -----------------------------------------------------
 // Routes INDUCESS
@@ -38,7 +44,7 @@ app.use(morgan("dev"));
 // GET requests
 // -----------------------------------------------------
 app.get("/", (req, res) => {
-  res.send(`root response`);
+  res.send(`pokedex root response`);
 });
 
 // -----------------------------------------------------

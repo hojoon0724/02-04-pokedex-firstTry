@@ -31,14 +31,44 @@ app.get("/index", (req, res) => {
 });
 
 // New
+app.get("/index/new", (req, res) => {
+  res.render("new.ejs");
+});
 
 // Delete
+app.delete("/index/:id", (req, res) => {
+  const id = req.params.id;
+  pokemon.splice(id, 1);
+  res.redirect("/index");
+});
 
 // Update
+app.put("/index/:id", (req, res) => {
+  let existingData = pokemon[req.params.id];
+  let newData = req.body;
+  let mergedData = {
+    ...existingData,
+    ...newData,
+  };
+  pokemon[req.params.id] = mergedData;
+  res.redirect("/index");
+  console.log(pokemon[req.params.id]);
+});
 
 // Create
+app.post("/index", (req, res) => {
+  const body = req.body;
+  pokemon.push(body);
+  res.redirect("/index");
+});
 
 // Edit
+app.get("/index/:id/edit", (req, res) => {
+  console.log(pokemon[req.params.id]);
+  const id = req.params.id;
+  const pokemonName = pokemon[id];
+  res.render("edit.ejs", { pokemon, pokemonName, id });
+});
 
 // Seed
 
@@ -46,7 +76,7 @@ app.get("/index", (req, res) => {
 app.get("/index/:id", (req, res) => {
   const id = req.params.id;
   const pokemonName = pokemon[id];
-  res.render("show.ejs", { pokemon, pokemonName });
+  res.render("show.ejs", { pokemon, pokemonName, id });
 });
 
 // -----------------------------------------------------

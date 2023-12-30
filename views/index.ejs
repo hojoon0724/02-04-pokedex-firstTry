@@ -9,6 +9,9 @@
         <div class="pokemon-container">
           <div class="pokemon-picture"><img src="<%= pokemon[i].img %>" /></div>
           <div class="pokemon-name"><%= pokemon[i].name %></div>
+          <form action="/index/<%= i %>?_method=DELETE" method="POST">
+            <input type="submit" value="delete" />
+          </form>
         </div>
       </a>
       <% } %>

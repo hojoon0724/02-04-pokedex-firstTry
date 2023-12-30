@@ -2,10 +2,16 @@
 <html lang="en">
   <%- include("./partials/head.ejs") %>
   <body>
-    <h1>individual page</h1>
-    <% console.log(pokemonName) %>
+    <h1><%= pokemonName.name %></h1>
     <div class="top-container">
       <div class="name"><%= pokemonName.name %></div>
+
+      <form action="/index/<%= id %>/edit">
+        <input type="submit" value="edit" />
+      
+      <form action="/index/<%= id %>?_method=DELETE" method="POST">
+        <input type="submit" value="delete" />
+      </form>
     </div>
   </body>
 </html>

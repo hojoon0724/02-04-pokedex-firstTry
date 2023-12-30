@@ -162,7 +162,8 @@ a {
 #edit,
 #delete,
 #cancel,
-#update {
+#update,
+#add {
   padding: 8px 16px;
   border: 0px;
   font-weight: 700;
@@ -182,6 +183,10 @@ a {
 }
 
 #update {
+  background-color: rgb(0, 146, 15);
+}
+
+#add {
   background-color: rgb(0, 146, 15);
 }
 

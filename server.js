@@ -52,15 +52,15 @@ app.put("/index/:id", (req, res) => {
   };
   pokemon[req.params.id] = mergedData;
   res.redirect("/index");
-  console.log(pokemon[req.params.id]);
-  console.log(pokemon[req.params.id.stats]);
 });
 
 // Create
 app.post("/index", (req, res) => {
   const body = req.body;
+  console.log(req.body);
   pokemon.push(body);
   res.redirect("/index");
+  console.log(pokemon[pokemon.length]);
 });
 
 // Edit

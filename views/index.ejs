@@ -2,6 +2,7 @@
 <html lang="en">
   <%- include("./partials/head.ejs") %>
   <body>
+    <%- include("./partials/nav.ejs") %>
     <h1>Pokedex</h1>
     <div class="top-container">
       <% for (var i = 0; i < pokemon.length; i++) { %>
@@ -9,9 +10,6 @@
         <div class="pokemon-container">
           <div class="pokemon-picture"><img src="<%= pokemon[i].img %>" /></div>
           <div class="pokemon-name"><%= pokemon[i].name %></div>
-          <form action="/index/<%= i %>?_method=DELETE" method="POST">
-            <input type="submit" value="delete" />
-          </form>
         </div>
       </a>
       <% } %>

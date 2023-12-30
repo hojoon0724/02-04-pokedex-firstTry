@@ -2,16 +2,53 @@
 <html lang="en">
   <%- include("./partials/head.ejs") %>
   <body>
-    <h1><%= pokemonName.name %></h1>
-    <div class="top-container">
-      <div class="name"><%= pokemonName.name %></div>
-
-      <form action="/index/<%= id %>/edit">
-        <input type="submit" value="edit" />
-      
-      <form action="/index/<%= id %>?_method=DELETE" method="POST">
-        <input type="submit" value="delete" />
-      </form>
+    <div class="details-container">
+      <div class="details-pokemon-card">
+        <div class="details-name-picture">
+          <div class="details-image"><img src="<%= pokemonName.img %>" /></div>
+          <div class="details-name"><%= pokemonName.name %></div>
+        </div>
+        <div class="details-type">
+          <p>Type: <% for (var i = 0; i < pokemonName.type.length; i++) { %> <%= pokemonName.type[i]%> <% } %></p>
+        </div>
+        <div class="details-stats">
+          <div class="stats-row">
+            <div class="stats-names">HP</div>
+            <div class="stats-number"><%= pokemonName.stats.hp %></div>
+          </div>
+          <div class="stats-row">
+            <div class="stats-names">Attack</div>
+            <div class="stats-number"><%= pokemonName.stats.attack %></div>
+          </div>
+          <div class="stats-row">
+            <div class="stats-names">Defense</div>
+            <div class="stats-number"><%= pokemonName.stats.defense %></div>
+          </div>
+          <div class="stats-row">
+            <div class="stats-names">Special Attack</div>
+            <div class="stats-number"><%= pokemonName.stats.spattack %></div>
+          </div>
+          <div class="stats-row">
+            <div class="stats-names">Special Defense</div>
+            <div class="stats-number"><%= pokemonName.stats.spdefense %></div>
+          </div>
+          <div class="stats-row">
+            <div class="stats-names">Speed</div>
+            <div class="stats-number"><%= pokemonName.stats.speed %></div>
+          </div>
+        </div>
+        <div class="buttons-container">
+          <form action="/index/<%= id %>/edit">
+            <input type="submit" value="edit" id="edit" />
+          </form>
+          <form action="/index/<%= id %>?_method=DELETE" method="POST">
+            <input type="submit" value="delete" id="delete" />
+          </form>
+        </div>
+        <div class="back-button">
+          <a href="/index">Back</a>
+        </div>
+      </div>
     </div>
   </body>
 </html>

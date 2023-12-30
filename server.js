@@ -70,8 +70,6 @@ app.get("/index/:id/edit", (req, res) => {
   res.render("edit.ejs", { pokemon, pokemonName, id });
 });
 
-// Seed
-
 // Show
 app.get("/index/:id", (req, res) => {
   const id = req.params.id;
@@ -83,7 +81,7 @@ app.get("/index/:id", (req, res) => {
 // GET requests
 // -----------------------------------------------------
 app.get("/", (req, res) => {
-  res.send(`pokedex root response`);
+  res.redirect("/index");
 });
 
 // -----------------------------------------------------

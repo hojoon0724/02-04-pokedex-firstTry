@@ -44,13 +44,29 @@ app.delete("/index/:id", (req, res) => {
 
 // Update
 app.put("/index/:id", (req, res) => {
+  console.log(req.body);
+  let updatedData = {
+    name: req.body.name,
+    type: [req.body.type[0], req.body.type[1]],
+    stats: {
+      hp: req.body.hp,
+      attack: req.body.attack,
+      defense: req.body.defense,
+      spattack: req.body.spattack,
+      spdefense: req.body.spdefense,
+      speed: req.body.spdefense,
+    },
+  };
+  console.log(updatedData);
   let existingData = pokemon[req.params.id];
-  let newData = req.body;
+  req.body = updatedData;
+  console.log(req.body);
   let mergedData = {
     ...existingData,
-    ...newData,
+    ...req.body,
   };
   pokemon[req.params.id] = mergedData;
+  console.log(mergedData);
   res.redirect("/index");
 });
 
@@ -60,7 +76,6 @@ app.post("/index", (req, res) => {
   console.log(req.body);
   pokemon.push(body);
   res.redirect("/index");
-  console.log(pokemon[pokemon.length]);
 });
 
 // Edit

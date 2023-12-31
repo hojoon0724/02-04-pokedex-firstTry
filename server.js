@@ -44,7 +44,6 @@ app.delete("/index/:id", (req, res) => {
 
 // Update
 app.put("/index/:id", (req, res) => {
-  console.log(req.body);
   let updatedData = {
     name: req.body.name,
     type: [req.body.type[0], req.body.type[1]],
@@ -57,30 +56,38 @@ app.put("/index/:id", (req, res) => {
       speed: req.body.spdefense,
     },
   };
-  console.log(updatedData);
   let existingData = pokemon[req.params.id];
   req.body = updatedData;
-  console.log(req.body);
   let mergedData = {
     ...existingData,
     ...req.body,
   };
   pokemon[req.params.id] = mergedData;
-  console.log(mergedData);
   res.redirect("/index");
 });
 
 // Create
 app.post("/index", (req, res) => {
-  const body = req.body;
-  console.log(req.body);
-  pokemon.push(body);
+  let newEntryData = {
+    name: req.body.name,
+    img: req.body.img,
+    type: [req.body.type[0], req.body.type[1]],
+    stats: {
+      hp: req.body.hp,
+      attack: req.body.attack,
+      defense: req.body.defense,
+      spattack: req.body.spattack,
+      spdefense: req.body.spdefense,
+      speed: req.body.spdefense,
+    },
+  };
+  req.body = newEntryData;
+  pokemon.push(req.body);
   res.redirect("/index");
 });
 
 // Edit
 app.get("/index/:id/edit", (req, res) => {
-  console.log(pokemon[req.params.id]);
   const id = req.params.id;
   const pokemonName = pokemon[id];
   res.render("edit.ejs", { pokemon, pokemonName, id });
